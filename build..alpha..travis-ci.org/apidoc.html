@@ -1,0 +1,1486 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/MobileChromeApps/mobile-chrome-apps#readme"
+
+    >cca (v0.8.1)</a>
+</h1>
+<h4>Run Chrome Apps on mobile using Apache Cordova</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca">module cca</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.parseCLI">
+            function <span class="apidocSignatureSpan">cca.</span>parseCLI
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.tools_check">
+            function <span class="apidocSignatureSpan">cca.</span>tools_check
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>analytics</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>analytics_loader</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>cordova_commands</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>hooks</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>upgrade_project</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.analytics">module cca.analytics</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.analytics.sendEvent">
+            function <span class="apidocSignatureSpan">cca.analytics.</span>sendEvent
+            <span class="apidocSignatureSpan">(eventCategory, eventAction)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.analytics_loader">module cca.analytics_loader</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.analytics_loader.analyticsCommand">
+            function <span class="apidocSignatureSpan">cca.analytics_loader.</span>analyticsCommand
+            <span class="apidocSignatureSpan">(command)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.analytics_loader.getAnalyticsModule">
+            function <span class="apidocSignatureSpan">cca.analytics_loader.</span>getAnalyticsModule
+            <span class="apidocSignatureSpan">(useTestingVersion)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.analytics_loader.readWriteUserConfig">
+            function <span class="apidocSignatureSpan">cca.analytics_loader.</span>readWriteUserConfig
+            <span class="apidocSignatureSpan">(userConfig)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.cordova_commands">module cca.cordova_commands</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.cordova_commands.runAllCmds">
+            function <span class="apidocSignatureSpan">cca.cordova_commands.</span>runAllCmds
+            <span class="apidocSignatureSpan">(commands)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.cordova_commands.runCmd">
+            function <span class="apidocSignatureSpan">cca.cordova_commands.</span>runCmd
+            <span class="apidocSignatureSpan">(cmd)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.hooks">module cca.hooks</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.hooks.beforePluginAdd">
+            function <span class="apidocSignatureSpan">cca.hooks.</span>beforePluginAdd
+            <span class="apidocSignatureSpan">(context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.hooks.postPrepare">
+            function <span class="apidocSignatureSpan">cca.hooks.</span>postPrepare
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.hooks.prePrepare">
+            function <span class="apidocSignatureSpan">cca.hooks.</span>prePrepare
+            <span class="apidocSignatureSpan">(context)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.hooks.registerHooks">
+            function <span class="apidocSignatureSpan">cca.hooks.</span>registerHooks
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.hooks.unregisterHooks">
+            function <span class="apidocSignatureSpan">cca.hooks.</span>unregisterHooks
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.tools_check">module cca.tools_check</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.tools_check.tools_check">
+            function <span class="apidocSignatureSpan">cca.</span>tools_check
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.tools_check.fixEnv">
+            function <span class="apidocSignatureSpan">cca.tools_check.</span>fixEnv
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.upgrade_project">module cca.upgrade_project</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.upgrade_project.upgradeProject">
+            function <span class="apidocSignatureSpan">cca.upgrade_project.</span>upgradeProject
+            <span class="apidocSignatureSpan">(skipPrompt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.upgrade_project.upgradeProjectIfStale">
+            function <span class="apidocSignatureSpan">cca.upgrade_project.</span>upgradeProjectIfStale
+            <span class="apidocSignatureSpan">(skipPrompt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.utils">module cca.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.assetDirForPlatform">
+            function <span class="apidocSignatureSpan">cca.utils.</span>assetDirForPlatform
+            <span class="apidocSignatureSpan">(platform)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.colorizeConsole">
+            function <span class="apidocSignatureSpan">cca.utils.</span>colorizeConsole
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.exec">
+            function <span class="apidocSignatureSpan">cca.utils.</span>exec
+            <span class="apidocSignatureSpan">(cmd, opt_silent)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.exit">
+            function <span class="apidocSignatureSpan">cca.utils.</span>exit
+            <span class="apidocSignatureSpan">(code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.fatal">
+            function <span class="apidocSignatureSpan">cca.utils.</span>fatal
+            <span class="apidocSignatureSpan">(msg)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.fixPathSlashes">
+            function <span class="apidocSignatureSpan">cca.utils.</span>fixPathSlashes
+            <span class="apidocSignatureSpan">(p)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.isWindows">
+            function <span class="apidocSignatureSpan">cca.utils.</span>isWindows
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.utils.waitForKey">
+            function <span class="apidocSignatureSpan">cca.utils.</span>waitForKey
+            <span class="apidocSignatureSpan">(opt_prompt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca" id="apidoc.module.cca">module cca</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.parseCLI" id="apidoc.element.cca.parseCLI">
+        function <span class="apidocSignatureSpan">cca.</span>parseCLI
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function main() {
+  cordovaLib.binname = &#x27;cca&#x27;;
+
+  var commandLineFlags = require(&#x27;./parse-command-line&#x27;)();
+  utils.exit.pause_on_exit = commandLineFlags.pause_on_exit;
+
+  // TODO: Should we support an opt out `--no-update-notifier`?
+  var pkg = require(&#x27;../package.json&#x27;);
+  updateNotifier({
+    pkg: pkg,
+    updateCheckInterval: 1000 * 60 * 60 * 24, // Daily
+  }).notify();
+
+  var command = commandLineFlags._[0];
+  var packageVersion = require(&#x27;../package&#x27;).version;
+
+  // Colorize after parseCommandLine to avoid --help being printed in red.
+  utils.colorizeConsole();
+
+  hooks.registerHooks();
+
+  function printCcaVersionPrefix() {
+    console.log(&#x27;cca v&#x27; + packageVersion);
+  }
+
+  if (command == &#x27;exec&#x27;) {
+    return require(&#x27;./tools-check&#x27;).fixEnv()
+    .then(function() {
+      require(&#x27;./exec&#x27;)(process.argv.slice(3));
+    }).done(null, utils.fatal);
+  }
+
+  if (commandLineFlags.v) {
+    command = &#x27;version&#x27;;
+  }
+  if (commandLineFlags.h || !command) {
+    command = &#x27;help&#x27;;
+  }
+
+  function autoAddPlatforms() {
+    var plats = [];
+    if (process.argv.indexOf(&#x27;android&#x27;) != -1 &#x26;&#x26; !fs.existsSync(path.join(&#x27;platforms&#x27;, &#x27;android&#x27;))) {
+      plats.push(&#x27;android&#x27;);
+    }
+    if (process.argv.indexOf(&#x27;ios&#x27;) != -1 &#x26;&#x26; !fs.existsSync(path.join(&#x27;platforms&#x27;, &#x27;ios&#x27;))) {
+      plats.push(&#x27;ios&#x27;);
+    }
+    if (plats.length === 0) {
+      return Q();
+    }
+    var argv = require(&#x27;optimist&#x27;)
+        .options(&#x27;link&#x27;, { type: &#x27;boolean&#x27; })
+        .options(&#x27;verbose&#x27;, { type: &#x27;boolean&#x27;, alias: &#x27;d&#x27; })
+        .argv;
+    var opts = {
+      link: argv.link,
+      verbose: argv.verbose
+    };
+    return require(&#x27;./cordova-commands&#x27;).runCmd([&#x27;platform&#x27;, &#x27;add&#x27;, plats, opts])
+    .then(require(&#x27;./write-out-cca-version&#x27;));
+  }
+
+  function beforeCordovaPrepare() {
+    return autoAddPlatforms()
+    .then(function() {
+      if (commandLineFlags[&#x27;skip-upgrade&#x27;]) {
+        return;
+      }
+      if (!fs.existsSync(path.join(&#x27;www&#x27;, &#x27;manifest.json&#x27;))) {
+        return Q.reject(&#x27;This is not a cca project (no www/manifest.json file). Perhaps you meant to use the cordova-cli?&#x27;);
+      }
+      return require(&#x27;./upgrade-project&#x27;).upgradeProjectIfStale(commandLineFlags.y);
+    });
+  }
+
+  function forwardCurrentCommandToCordova() {
+    // Unregister some event handlers in cordova-lib EventEmitter. Otherwise
+    // double printouts will happen because cordova-cli registers its own
+    // handlers. This is only relevant when --verbose or -d flag is used.
+    cordovaLib.events.removeListener(&#x27;results&#x27;, console.log);
+    cordovaLib.events.removeListener(&#x27;log&#x27;, console.log);
+    cordovaLib.events.removeListener(&#x27;warn&#x27;, console.warn);
+    cordovaLib.events.removeListener(&#x27;verbose&#x27;, console.log);
+
+    // TODO: Can we replace use of CLI here?  Calls to cordova-lib cordova.raw?
+    return cordova.cli(process.argv);
+  }
+
+  function printVersionThenPrePrePrepareThenForwardCommandToCordova() {
+    printCcaVersionPrefix();
+    return beforeCordovaPrepare()
+      .then(forwardCurrentCommandToCordova);
+  }
+
+  var commandActions = {
+    &#x27;pre-prepare&#x27;: function() {
+      return require(&#x27;./pre-prepare&#x27;)();
+    },
+    &#x27;update-app&#x27;: function() {
+      // TODO: deprecated command, use post-prepare instead
+      return commandActions[&#x27;post-prepare&#x27;]();
+    },
+    &#x27;post-prepare&#x27;: function() {
+      return require(&#x27;./post-prepare&#x27;)();
+    },
+    &#x27;checkenv&#x27;: function() {
+      printCcaVersionPrefix();
+      return require(&#x27;./tools-check&#x27;)();
+    },
+    &#x27;push&#x27;: function() {
+      printCcaVersionPrefix();
+      return Q.fcall(function() {
+        var extraFlag = commandLineFlags._[1] || &#x27;&#x27;;
+        if (extraFlag) {
+          require(&#x27;optimist&#x27;).showHelp(console.log);
+          return Q.reject(&#x27;Flag &#x22;&#x27; + extraFlag + &#x27;&#x22; not understood.  Did you mean `--target=&#x27; + extraFlag + &#x27;`?&#x27;);
+        }
+        return require(&#x27;./push-to-harness&#x27;)(commandLineFlags.target, commandLineFlags.watch);
+      });
+    },
+    &#x27;run&#x27;: function() {
+      printCcaVersionPrefix();
+      var platform = commandLineFlags._[1];
+      if (platform === &#x27;chrome&#x27; || platform === &#x27;canary&#x27;) {
+        return require(&#x27;./run-in-chrome&#x27; ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.tools_check" id="apidoc.element.cca.tools_check">
+        function <span class="apidocSignatureSpan">cca.</span>tools_check
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toolsCheck() {
+  var ret = Q();
+
+  // Is this the first time we&#x27;re checking for the tools?
+  if (typeof hasAndroidPlatform == &#x27;undefined&#x27;) {
+    ret = ret.then(function() {
+      return checkHasAndroid().then(checkHasIos);
+    });
+  }
+
+  return ret.then(function() {
+    if (!hasAndroidPlatform &#x26;&#x26; !hasXcode)
+      // TODO: Replace inline docs links with general instructions to read --help / docs / report issues
+      return Q.reject(&#x27;No usable build environment could be found. Please refer to our installation guide:\n&#x27; +
+          &#x27;https://github.com/MobileChromeApps/mobile-chrome-apps/blob/master/docs/Installation.md&#x27;);
+
+    return Q({
+      hasAndroidPlatform: hasAndroidPlatform,
+      hasXcode: hasXcode,
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.analytics" id="apidoc.module.cca.analytics">module cca.analytics</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.analytics.sendEvent" id="apidoc.element.cca.analytics.sendEvent">
+        function <span class="apidocSignatureSpan">cca.analytics.</span>sendEvent
+        <span class="apidocSignatureSpan">(eventCategory, eventAction)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sendEvent = function (eventCategory, eventAction) {
+  var url = URL_BASE;
+  url += &#x27;&#x26;t=event&#x27;;
+  url += &#x27;&#x26;ec=&#x27; + eventCategory;
+  url += &#x27;&#x26;ea=&#x27; + eventAction;
+
+  sendMeasurement(url);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.analytics_loader" id="apidoc.module.cca.analytics_loader">module cca.analytics_loader</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.analytics_loader.analyticsCommand" id="apidoc.element.cca.analytics_loader.analyticsCommand">
+        function <span class="apidocSignatureSpan">cca.analytics_loader.</span>analyticsCommand
+        <span class="apidocSignatureSpan">(command)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function analyticsCommand(command) {
+  var usage = &#x27;`cca analytics [enable|disable]`&#x27;;
+
+  // `cca analytics` will tell the user whether analytics are enabled or disabled.
+  if (!command) {
+    var userConfig = readWriteUserConfig();
+    var permission = userConfig &#x26;&#x26; userConfig.analytics &#x26;&#x26; userConfig.analytics.isAllowed;
+    var outputText = &#x27;Usage statistics collection is currently &#x27; + (permission ? &#x27;enabled&#x27; : &#x27;disabled&#x27;) + &#x27;. &#x27;;
+    outputText += &#x27;To change this, run &#x27; + usage + &#x27;.&#x27;;
+    console.log(outputText);
+    return;
+  }
+
+  // We only allow `enable` and `disable`; print an error if we were given something else.
+  command = command.toLowerCase();
+  if (command != &#x27;enable&#x27; &#x26;&#x26; command != &#x27;disable&#x27;) {
+    var errorText = &#x27;Invalid argument: &#x27; + command + &#x27;. &#x27;;
+    errorText += &#x27;To enable or disable usage statistics collection, run &#x27; + usage + &#x27;.&#x27;;
+    utils.fatal(errorText);
+    return;
+  }
+
+  // Set analytics permission according to the given command.
+  writePermission(command == &#x27;enable&#x27;);
+  console.log(&#x27;Usage statistics collection &#x27; + command + &#x27;d.&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.analytics_loader.getAnalyticsModule" id="apidoc.element.cca.analytics_loader.getAnalyticsModule">
+        function <span class="apidocSignatureSpan">cca.analytics_loader.</span>getAnalyticsModule
+        <span class="apidocSignatureSpan">(useTestingVersion)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getAnalyticsModule(useTestingVersion) {
+  if (useTestingVersion) {
+    analyticsModule = makeFakeModule(true /* logCalls */);
+    return Q(analyticsModule);
+  }
+
+  // If we&#x27;ve already loaded an analytics module, use the one we already have.
+  if (analyticsModule) {
+    return Q(analyticsModule);
+  }
+
+  // Ask for permission and return a module accordingly.
+  return requestPermission()
+  .then(function(permission) {
+    analyticsModule = permission ? require(&#x27;./analytics&#x27;) : makeFakeModule(false /* logCalls */);
+    return Q(analyticsModule);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.analytics_loader.readWriteUserConfig" id="apidoc.element.cca.analytics_loader.readWriteUserConfig">
+        function <span class="apidocSignatureSpan">cca.analytics_loader.</span>readWriteUserConfig
+        <span class="apidocSignatureSpan">(userConfig)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readWriteUserConfig(userConfig) {
+  // Determine the path of the config file.
+  // We use this format to comply with the `rc` config loader (https://github.com/dominictarr/rc), in case we use that in the future
+.
+  var HOME = process.env[(process.platform.slice(0, 3) == &#x27;win&#x27;) ? &#x27;USERPROFILE&#x27; : &#x27;HOME&#x27;];
+  var userConfigDir = path.join(HOME, &#x27;.cca&#x27;);
+  var userConfigPath = path.join(userConfigDir, &#x27;config&#x27;);
+
+  // Write to the file if we were passed an argument, or read and return it if we were.
+  // If we were instructed to read the file, but it doesn&#x27;t exist, return null.
+  if (userConfig) {
+    shelljs.mkdir(&#x27;-p&#x27;, userConfigDir);
+    fs.writeFileSync(userConfigPath, JSON.stringify(userConfig, null, 4));
+  } else if (fs.existsSync(userConfigPath)) {
+    userConfig = JSON.parse(fs.readFileSync(userConfigPath, &#x27;utf-8&#x27;));
+    return userConfig;
+  } else {
+    return null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+URL_BASE += &#x27;&#x26;cid=&#x27; + cid;
+URL_BASE += &#x27;&#x26;an=&#x27; + an;
+URL_BASE += &#x27;&#x26;av=&#x27; + av;
+
+// This function retrieves the client ID from the config file or generates if it one doesn&#x27;t exist.
+function getClientId() {
+var analyticsLoader = require(&#x27;./analytics-loader&#x27;);
+var userConfig = analyticsLoader.<span class="apidocCodeKeywordSpan">readWriteUserConfig</span>();
+
+// Return the client id from the file, if one is there.
+if (userConfig &#x26;&#x26; userConfig.analytics &#x26;&#x26; userConfig.analytics.clientId) {
+  return userConfig.analytics.clientId;
+}
+
+// We don&#x27;t have a client id yet, so generate one, save it, and return it.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.cordova_commands" id="apidoc.module.cca.cordova_commands">module cca.cordova_commands</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.cordova_commands.runAllCmds" id="apidoc.element.cca.cordova_commands.runAllCmds">
+        function <span class="apidocSignatureSpan">cca.cordova_commands.</span>runAllCmds
+        <span class="apidocSignatureSpan">(commands)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function runAllCmds(commands) {
+  return commands.reduce(function(soFar, f) {
+    return soFar.then(function() {
+      return exports.runCmd(f);
+    });
+  }, Q());
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var cmds = [];
+  if (flags.ios) {
+    cmds.push([&#x27;platform&#x27;, &#x27;add&#x27;, &#x27;ios&#x27;]);
+  }
+  if (flags.android) {
+    cmds.push([&#x27;platform&#x27;, &#x27;add&#x27;, &#x27;android&#x27;]);
+  }
+  return require(&#x27;./cordova-commands&#x27;).<span class="apidocCodeKeywordSpan">runAllCmds</span>(cmds);
+})
+.then(function() {
+  var wwwPath = path.join(destAppDir, &#x27;www&#x27;);
+  var welcomeText = &#x27;Done!\n\n&#x27;;
+  if (flags[&#x27;link-to&#x27;]) {
+    welcomeText += &#x27;Your project has been created, with web assets symlinked to the following chrome app:\n&#x27; +
+                   wwwPath + &#x27; --&#x3e; &#x27; + srcAppDir + &#x27;\n\n&#x27;;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.cordova_commands.runCmd" id="apidoc.element.cca.cordova_commands.runCmd">
+        function <span class="apidocSignatureSpan">cca.cordova_commands.</span>runCmd
+        <span class="apidocSignatureSpan">(cmd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function runCmd(cmd) {
+  var msg = cmd[0];
+  cmd.slice(1).forEach(function(arg) {
+    if (Array.isArray(arg)) {
+      msg += &#x27; &#x27; + arg.join(&#x27; &#x27;);
+      return;
+    } else if (typeof arg != &#x27;string&#x27;) {
+      return;
+    }
+    if (arg.indexOf(&#x27; &#x27;) != -1) {
+      msg += &#x27; &#x22;&#x27; + arg + &#x27;&#x22;&#x27;;
+    } else {
+      msg += &#x27; &#x27; + arg;
+    }
+  });
+  console.log(&#x27;## Running Cordova Command: &#x27; + msg);
+  return cordova.raw[cmd[0]].apply(cordova, cmd.slice(1));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return cordova.raw[cmd[0]].apply(cordova, cmd.slice(1));
+};
+
+// Chains a list of cordova commands, returning a promise.
+exports.runAllCmds = function runAllCmds(commands) {
+  return commands.reduce(function(soFar, f) {
+    return soFar.then(function() {
+      return exports.<span class="apidocCodeKeywordSpan">runCmd</span>(f);
+    });
+  }, Q());
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.hooks" id="apidoc.module.cca.hooks">module cca.hooks</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.hooks.beforePluginAdd" id="apidoc.element.cca.hooks.beforePluginAdd">
+        function <span class="apidocSignatureSpan">cca.hooks.</span>beforePluginAdd
+        <span class="apidocSignatureSpan">(context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function beforePluginAdd(context) {
+  return getManifest(&#x27;www&#x27;)
+    .then(function(manifest) {
+      return ccaManifestLogic.analyseManifest(manifest);
+    })
+    .then(function(manifestData) {
+      var pluginsToBeNotInstalled = manifestData.pluginsToBeNotInstalled.concat();
+      var pluginsBeingInstalledRightNow = context.plugins;
+
+      pluginsToBeNotInstalled = pluginsToBeNotInstalled.filter(function(plugin) {
+        return pluginsBeingInstalledRightNow.indexOf(plugin) != -1;
+      });
+
+      if (pluginsToBeNotInstalled.length === 0) return;
+
+      console.error(&#x22;Error: The following plugin(s) cannot be explicitly installed:&#x22;);
+      pluginsToBeNotInstalled.forEach(function(plugin) {
+        console.warn(&#x22;*&#x22;, plugin);
+      });
+      console.error(&#x22;Instead, add the proper manifest.json permissions.&#x22;);
+      console.error(&#x22;See: https://developer.chrome.com/apps/manifest&#x22;);
+
+      return Q.reject(&#x22;Abort plugin add&#x22;);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.hooks.postPrepare" id="apidoc.element.cca.hooks.postPrepare">
+        function <span class="apidocSignatureSpan">cca.hooks.</span>postPrepare
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function postPrepareCommand(opts) {
+  var hasAndroid = fs.existsSync(path.join(&#x27;platforms&#x27;, &#x27;android&#x27;));
+  var hasIos = fs.existsSync(path.join(&#x27;platforms&#x27;, &#x27;ios&#x27;));
+
+  if (!fs.existsSync(&#x27;platforms&#x27;)) {
+    return Q.reject(&#x27;No platforms directory found. Please run script from the root of your project.&#x27;);
+  }
+
+  var p = Q();
+  if (hasAndroid) {
+    p = p.then(function() { return postPrepareInternal(&#x27;android&#x27;); });
+  }
+  if (hasIos) {
+    p = p.then(function() { return postPrepareInternal(&#x27;ios&#x27;); });
+  }
+  return p;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.hooks.prePrepare" id="apidoc.element.cca.hooks.prePrepare">
+        function <span class="apidocSignatureSpan">cca.hooks.</span>prePrepare
+        <span class="apidocSignatureSpan">(context)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function prePrepareCommand(context) {
+  // context is the Context object passed in by cordova-lib/HooksRunner.
+  var pluginsToBeInstalled = [];
+  var pluginsToBeNotInstalled = [];
+  var pluginsNotRecognized = [];
+  var manifest, whitelist;
+  // Convert all plugin IDs to lower case (registry has problems with upper case).
+  var installedPlugins = context.cordova.plugins.map(function(s) { return s.toLowerCase(); });
+
+  var argv = require(&#x27;optimist&#x27;)
+      .options(&#x27;webview&#x27;, { type: &#x27;string&#x27; })
+      .options(&#x27;release&#x27;, { type: &#x27;boolean&#x27; })
+      .options(&#x27;link&#x27;, { type: &#x27;boolean&#x27; })
+      .options(&#x27;verbose&#x27;, { type: &#x27;boolean&#x27;, alias: &#x27;d&#x27; })
+      .argv;
+
+  // Pre-prepare manifest check and project munger
+  return require(&#x27;./get-manifest&#x27;)(&#x27;www&#x27;)
+  .then(function(m) {
+    manifest = m;
+    if (argv.webview) {
+        manifest.webview = argv.webview;
+    }
+
+    return ccaManifestLogic.analyseManifest(manifest);
+  })
+  .then(function(manifestData) {
+    pluginsToBeInstalled = manifestData.pluginsToBeInstalled.concat([&#x27;org.chromium.cca-hooks&#x27;]);
+    pluginsToBeNotInstalled = manifestData.pluginsToBeNotInstalled.concat();
+    pluginsNotRecognized = manifestData.pluginsNotRecognized;
+    whitelist = manifestData.whitelist;
+
+    var configXmlData = fs.readFileSync(&#x27;config.xml&#x27;, &#x27;utf8&#x27;);
+    var configXmlDom = new xmldom.DOMParser().parseFromString(configXmlData);
+    ccaManifestLogic.updateConfigXml(manifest, manifestData, configXmlDom);
+    var newConfigData = new xmldom.XMLSerializer().serializeToString(configXmlDom);
+    // Don&#x27;t write out if nothing actually changed
+    if (newConfigData != configXmlData) {
+      console.log(&#x27;## Updating config.xml from manifest.json&#x27;);
+      fs.writeFileSync(&#x27;config.xml&#x27;, newConfigData);
+    }
+  })
+  .then(function() {
+    if ( (context.cordova.platforms.indexOf(&#x27;android&#x27;) != -1) &#x26;&#x26; argv[&#x27;release&#x27;]) {
+      if (!fs.existsSync(&#x27;android-release-keys.properties&#x27;)) {
+        utils.fatal(&#x27;Cannot build android in release mode: android-release-keys.properties not found in project root.&#x27;);
+      }
+    }
+    // Add a URL type to the iOS project&#x27;s .plist file.
+    // This is necessary for chrome.identity to redirect back to the app after authentication.
+    var hasIos = fs.existsSync(path.join(&#x27;platforms&#x27;, &#x27;ios&#x27;));
+    if (hasIos) {
+      var platforms = cordovaLib.cordova_platforms;
+      var parser = platforms.getPlatformApi(&#x27;ios&#x27;);
+      var infoPlistPath = path.join(&#x27;platforms&#x27;, &#x27;ios&#x27;, parser._parser.originalName, parser._parser.originalName + &#x27;-Info.plist&#x27;);
+      var infoPlistXml = et.parse(fs.readFileSync(infoPlistPath, &#x27;utf-8&#x27;));
+
+      var rootPlistElement = infoPlistXml.getroot();
+      var rootDictElement = rootPlistElement.getItem(0);
+
+      var bundleUrlTypesKey = et.SubElement(rootDictElement, &#x27;key&#x27;);
+      bundleUrlTypesKey.text = &#x27;CFBundleURLTypes&#x27;;
+      var bundleUrlTypesArray = et.SubElement(rootDictElement, &#x27;array&#x27;);
+      var bundleUrlTypesDict = et.SubElement(bundleUrlTypesArray, &#x27;dict&#x27;);
+
+      var bundleTypeRoleKey = et.SubElement(bundleUrlTypesDict, &#x27;key&#x27;);
+      bundleTypeRoleKey.text = &#x27;CFBundleTypeRole&#x27;;
+      var bundleTypeRoleString = et.SubElement(bundleUrlTypesDict, &#x27;string&#x27;);
+      bundleTypeRoleString.text = &#x27;Editor&#x27;;
+
+      var bundleUrlNameKey = et.SubElement(bundleUrlTypesDict, &#x27;key&#x27;);
+      bundleUrlNameKey.text = &#x27;CFBundleURLName&#x27;;
+      var bundleUrlNameString = et.SubElement(bundleUrlTypesDict, &#x27;string&#x27;);
+      bundleUrlNameString.text = manifest.packageId;
+
+      var bundleUrlSchemesKey = et.SubElement(bundleUrlTypesDict, &#x27;key&#x27;);
+      bundleUrlSchemesKey.text = &#x27;CFBundleURLSchemes&#x27;;
+      var bundleUrlSchemesArray = et.SubElement(bundleUrlTypesDict, &#x27;array&#x27;);
+      var bundleUrlSchemeString = et.SubElement(bundleUrlSchemesArray, &#x27;string&#x27;);
+      bundleUrlSchemeString.text = manifest.packageId;
+
+      fs.writeFileSync(infoPlistPath, infoPlistXml.write({indent: 4}), &#x27;utf-8&#x27;);
+    }
+  })
+  .then(function() {
+    var missingPlugins = __.difference(pluginsToBeInstalled, installedPlugins);
+    var excessPlugins = __.intersection(installedPlugins, pluginsToBeNotIns ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.hooks.registerHooks" id="apidoc.element.cca.hooks.registerHooks">
+        function <span class="apidocSignatureSpan">cca.hooks.</span>registerHooks
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function registerHooks() {
+  cordovaLib.events.on(&#x27;before_prepare&#x27;, prePrepare);
+  cordovaLib.events.on(&#x27;after_prepare&#x27;, postPrepare);
+  cordovaLib.events.on(&#x27;before_plugin_add&#x27;, beforePluginAdd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      };
+      return require(&#x27;./cordova-commands&#x27;).runCmd([&#x27;platform&#x27;, &#x27;add&#x27;, plats, opts]);
+    }
+  })
+  .then(function() {
+    // Turn the hooks back on and fire prepare. The pre-prepare hook is what
+    // installs all the cca plugins back.
+    hooks.<span class="apidocCodeKeywordSpan">registerHooks</span>();
+    return cordova.raw.prepare();
+  })
+  .then(require(&#x27;./write-out-cca-version&#x27;));
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.hooks.unregisterHooks" id="apidoc.element.cca.hooks.unregisterHooks">
+        function <span class="apidocSignatureSpan">cca.hooks.</span>unregisterHooks
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unregisterHooks() {
+  cordovaLib.events.removeListener(&#x27;before_prepare&#x27;, prePrepare);
+  cordovaLib.events.removeListener(&#x27;after_prepare&#x27;, postPrepare);
+  cordovaLib.events.removeListener(&#x27;before_plugin_add&#x27;, beforePluginAdd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return Q.reject(&#x27;Okay, nevermind.&#x27;);
+}
+  })
+  .then(function() {
+// Upgrading!
+
+// We don&#x27;t want the pre/post prepare hooks to fire during upgrade.
+hooks.<span class="apidocCodeKeywordSpan">unregisterHooks</span>();
+
+// Remove the old file based pre/post prepare hooks
+// TODO: Remove this later. Last version to use file based hooks was 4.0.0 released in Oct 2014.
+shelljs.rm(&#x27;-f&#x27;, path.join(&#x27;hooks&#x27;, &#x27;before_prepare&#x27;, &#x27;cca-pre-prepare.js&#x27;));
+shelljs.rm(&#x27;-f&#x27;, path.join(&#x27;hooks&#x27;, &#x27;after_prepare&#x27;, &#x27;cca-post-prepare.js&#x27;));
+
+// Remember what platforms we had before deleting them. If we only had one, don&#x27;t install the other after upgrade.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.tools_check" id="apidoc.module.cca.tools_check">module cca.tools_check</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.tools_check.tools_check" id="apidoc.element.cca.tools_check.tools_check">
+        function <span class="apidocSignatureSpan">cca.</span>tools_check
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toolsCheck() {
+  var ret = Q();
+
+  // Is this the first time we&#x27;re checking for the tools?
+  if (typeof hasAndroidPlatform == &#x27;undefined&#x27;) {
+    ret = ret.then(function() {
+      return checkHasAndroid().then(checkHasIos);
+    });
+  }
+
+  return ret.then(function() {
+    if (!hasAndroidPlatform &#x26;&#x26; !hasXcode)
+      // TODO: Replace inline docs links with general instructions to read --help / docs / report issues
+      return Q.reject(&#x27;No usable build environment could be found. Please refer to our installation guide:\n&#x27; +
+          &#x27;https://github.com/MobileChromeApps/mobile-chrome-apps/blob/master/docs/Installation.md&#x27;);
+
+    return Q({
+      hasAndroidPlatform: hasAndroidPlatform,
+      hasXcode: hasXcode,
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.tools_check.fixEnv" id="apidoc.element.cca.tools_check.fixEnv">
+        function <span class="apidocSignatureSpan">cca.tools_check.</span>fixEnv
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fixEnv = function () {
+  return check_reqs.check_java()
+  .then(function() {
+    return check_reqs.check_android();
+  })
+  .then(null, function() {});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.upgrade_project" id="apidoc.module.cca.upgrade_project">module cca.upgrade_project</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.upgrade_project.upgradeProject" id="apidoc.element.cca.upgrade_project.upgradeProject">
+        function <span class="apidocSignatureSpan">cca.upgrade_project.</span>upgradeProject
+        <span class="apidocSignatureSpan">(skipPrompt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function upgradeProject(skipPrompt) {
+  var argv = require(&#x27;optimist&#x27;)
+      .options(&#x27;link&#x27;, { type: &#x27;boolean&#x27; })
+      .options(&#x27;verbose&#x27;, { type: &#x27;boolean&#x27;, alias: &#x27;d&#x27; })
+      .argv;
+  var hadPlatforms = [];
+
+  return Q()
+  .then(function(){
+    if (skipPrompt) return &#x27;y&#x27;;
+    return utils.waitForKey(&#x27;Warning: Upgrade will replace all files in platforms and plugins. Continue? [y/N] &#x27;);
+  })
+  .then(function(key) {
+    if (key != &#x27;y&#x27; &#x26;&#x26; key != &#x27;Y&#x27;) {
+      return Q.reject(&#x27;Okay, nevermind.&#x27;);
+    }
+  })
+  .then(function() {
+    // Upgrading!
+
+    // We don&#x27;t want the pre/post prepare hooks to fire during upgrade.
+    hooks.unregisterHooks();
+
+    // Remove the old file based pre/post prepare hooks
+    // TODO: Remove this later. Last version to use file based hooks was 4.0.0 released in Oct 2014.
+    shelljs.rm(&#x27;-f&#x27;, path.join(&#x27;hooks&#x27;, &#x27;before_prepare&#x27;, &#x27;cca-pre-prepare.js&#x27;));
+    shelljs.rm(&#x27;-f&#x27;, path.join(&#x27;hooks&#x27;, &#x27;after_prepare&#x27;, &#x27;cca-post-prepare.js&#x27;));
+
+    // Remember what platforms we had before deleting them. If we only had one, don&#x27;t install the other after upgrade.
+    hadPlatforms = getInstalledPlatfroms();
+    shelljs.rm(&#x27;-rf&#x27;, &#x27;platforms&#x27;);
+
+    shelljs.rm(&#x27;-f&#x27;, path.join(&#x27;plugins&#x27;, &#x27;android.json&#x27;));
+    shelljs.rm(&#x27;-f&#x27;, path.join(&#x27;plugins&#x27;, &#x27;ios.json&#x27;));
+
+    var installedPlugins = cordova.cordova_lib.PluginInfo.loadPluginsDir(&#x27;plugins&#x27;);
+    installedPlugins = __.pluck(installedPlugins, &#x27;id&#x27;);
+
+    // Only remove the CCA managed plugins
+    var allCcaPlugins = getCcaPlugins();
+    var pluginsToRemove = __.intersection(allCcaPlugins, installedPlugins);
+    if (pluginsToRemove &#x26;&#x26; pluginsToRemove.length) {
+      return require(&#x27;./cordova-commands&#x27;).runCmd([&#x27;plugin&#x27;, &#x27;rm&#x27;, pluginsToRemove]);
+    }
+  })
+  .then(function() {
+    console.log(&#x27;## First-time build. Detecting available SDKs:&#x27;);
+    return getSupportedPlatforms();
+  })
+  .then(function(plats) {
+    if (plats.length) {
+      // If this is a real upgrade, only install the platforms we had before.
+      if (hadPlatforms.length) {
+        plats = __.intersection(plats, hadPlatforms);
+      }
+      var opts = {
+        link: argv.link,
+        verbose: argv.verbose
+      };
+      return require(&#x27;./cordova-commands&#x27;).runCmd([&#x27;platform&#x27;, &#x27;add&#x27;, plats, opts]);
+    }
+  })
+  .then(function() {
+    // Turn the hooks back on and fire prepare. The pre-prepare hook is what
+    // installs all the cca plugins back.
+    hooks.registerHooks();
+    return cordova.raw.prepare();
+  })
+  .then(require(&#x27;./write-out-cca-version&#x27;));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var installedPlatfroms = getInstalledPlatfroms();
+
+  if (!installedPlatfroms.length) {
+// No platforms installed yet, (ab)use upgradeProject(skipPrompt=true) to install both.
+// Ideally we would do this in pre-prepare, but cordova doesn&#x27;t run pre-prepare scripts if there
+// are no target platforms, and its unclear how to make it do so with a difference concept
+// for pre-prepare scripts.
+return exports.<span class="apidocCodeKeywordSpan">upgradeProject</span>(true);
+  } else {
+
+var versionFile = path.join(&#x27;platforms&#x27;, &#x27;created-with-cca-version&#x27;);
+var createdWith;
+if (fs.existsSync(versionFile)) {
+  createdWith = fs.readFileSync(versionFile, &#x27;utf-8&#x27;).trim();
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.upgrade_project.upgradeProjectIfStale" id="apidoc.element.cca.upgrade_project.upgradeProjectIfStale">
+        function <span class="apidocSignatureSpan">cca.upgrade_project.</span>upgradeProjectIfStale
+        <span class="apidocSignatureSpan">(skipPrompt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function upgradeProjectIfStale(skipPrompt) {
+  var packageVersion = require(&#x27;../package&#x27;).version;
+  var installedPlatfroms = getInstalledPlatfroms();
+
+  if (!installedPlatfroms.length) {
+    // No platforms installed yet, (ab)use upgradeProject(skipPrompt=true) to install both.
+    // Ideally we would do this in pre-prepare, but cordova doesn&#x27;t run pre-prepare scripts if there
+    // are no target platforms, and its unclear how to make it do so with a difference concept
+    // for pre-prepare scripts.
+    return exports.upgradeProject(true);
+  } else {
+
+    var versionFile = path.join(&#x27;platforms&#x27;, &#x27;created-with-cca-version&#x27;);
+    var createdWith;
+    if (fs.existsSync(versionFile)) {
+      createdWith = fs.readFileSync(versionFile, &#x27;utf-8&#x27;).trim();
+    }
+    if (createdWith == packageVersion) {
+      return Q();
+    } else {
+      // The platforms/created-with-cca-version file does not exist or contains older version string. Upgrading.
+      console.log(&#x27;This project was not upgraded to cca v&#x27; + packageVersion + &#x27; yet.  Attempting to upgrade now...&#x27;);
+      return exports.upgradeProject(skipPrompt);
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.utils" id="apidoc.module.cca.utils">module cca.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.assetDirForPlatform" id="apidoc.element.cca.utils.assetDirForPlatform">
+        function <span class="apidocSignatureSpan">cca.utils.</span>assetDirForPlatform
+        <span class="apidocSignatureSpan">(platform)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function assetDirForPlatform(platform) {
+  if (platform === &#x27;android&#x27;) {
+    return path.join(&#x27;platforms&#x27;, platform, &#x27;assets&#x27;,&#x27;www&#x27;);
+  }
+  return path.join(&#x27;platforms&#x27;, platform, &#x27;www&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var html = fs.readFileSync(htmlPath, &#x27;utf8&#x27;);
+html = html.replace(/&#x3c;meta.*Content-Security.*&#x3e;/, cspTag);
+fs.writeFileSync(htmlPath, html);
+}
+
+// Internal function called potentially multiple times to cover all platforms.
+function postPrepareInternal(platform) {
+var root = utils.<span class="apidocCodeKeywordSpan">assetDirForPlatform</span>(platform);
+var localesPath = path.join(utils.assetDirForPlatform(platform), &#x27;_locales&#x27;);
+return Q().then(function() {
+  if (!fs.existsSync(localesPath)) {
+    return;
+  }
+  console.log(&#x27;## Normalizing _locales for &#x27; + platform);
+  return Q.ninvoke(fs, &#x27;readdir&#x27;, localesPath)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.colorizeConsole" id="apidoc.element.cca.utils.colorizeConsole">
+        function <span class="apidocSignatureSpan">cca.utils.</span>colorizeConsole
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function colorizeConsole() {
+  var origWarn = console.warn;
+  console.warn = function() {
+    var msg = [].slice.call(arguments).join(&#x27; &#x27;);
+    origWarn.call(console, &#x27;\x1B[33m&#x27; + msg + &#x27;\x1B[39m&#x27;);
+  };
+  console.error = function() {
+    var msg = [].slice.call(arguments).join(&#x27; &#x27;);
+    origWarn.call(console, &#x27;\x1B[31m&#x27; + msg + &#x27;\x1B[39m&#x27;);
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.exec" id="apidoc.element.cca.utils.exec">
+        function <span class="apidocSignatureSpan">cca.utils.</span>exec
+        <span class="apidocSignatureSpan">(cmd, opt_silent)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function exec(cmd, opt_silent) {
+  if (!opt_silent) {
+    console.log(&#x27;Running: &#x27; + cmd);
+  }
+  var d = Q.defer();
+  childProcess.exec(cmd, function(error, stdout, stderr) {
+    if (error) {
+      d.reject(error);
+    } else {
+      d.resolve({
+        stdout: stdout.trim(),
+        stderr: stderr.trim()
+      });
+    }
+  });
+  return d.promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function checkFileHandleLimit() {
+var deferred = Q.defer();
+if (process.platform != &#x27;win32&#x27; &#x26;&#x26; process.env[&#x27;SHELL&#x27;]) {
+  // gaze opens a lot of file handles, and the default on OS X is too small (EMFILE exceptions).
+  // NOTE: This is fixed in node 0.11, and is a problem only on node 0.10.
+  child_process.<span class="apidocCodeKeywordSpan">exec</span>(&#x27;ulimit -n&#x27;, function(error, stdout, stderr) {
+    var curLimit = !error &#x26;&#x26; +stdout;
+    deferred.resolve(curLimit || Infinity);
+  });
+} else {
+  deferred.resolve(Infinity);
+}
+return deferred.promise;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.exit" id="apidoc.element.cca.utils.exit">
+        function <span class="apidocSignatureSpan">cca.utils.</span>exit
+        <span class="apidocSignatureSpan">(code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function exit(code) {
+  if (exports.exit.pause_on_exit) {
+    exports.waitForKey(function() {
+      process.exit(code);
+    });
+  } else {
+    process.exit(code);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function writeHook(path) {
+  var contents = [
+      &#x22;#!/usr/bin/env node&#x22;,
+      &#x22;var cmdline = process.env[&#x27;CORDOVA_CMDLINE&#x27;];&#x22;,
+      &#x22;if (!/cca/.test(cmdline)) {&#x22;,
+      &#x22;  var msg = &#x27;ERROR: This is a CCA based project! Using `cordova` rather than `cca` will have unexpected results
+.&#x27; ;&#x22;,
+      &#x22;  console.error(msg);&#x22;,
+      &#x22;  process.<span class="apidocCodeKeywordSpan">exit</span>(1);&#x22;,
+      &#x22;}&#x22;
+      ];
+  fs.writeFileSync(path, contents.join(&#x27;\n&#x27;));
+  fs.chmodSync(path, &#x27;777&#x27;);
+}
+writeHook(path.join(&#x27;hooks&#x27;, &#x27;before_prepare&#x27;, &#x27;cca-check.js&#x27;));
+writeHook(path.join(&#x27;hooks&#x27;, &#x27;before_platform_add&#x27;, &#x27;cca-check.js&#x27;));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.fatal" id="apidoc.element.cca.utils.fatal">
+        function <span class="apidocSignatureSpan">cca.utils.</span>fatal
+        <span class="apidocSignatureSpan">(msg)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fatal(msg) {
+  console.error(msg);
+  if (msg &#x26;&#x26; msg.stack) console.error(msg.stack);
+  exports.exit(1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+
+  // We only allow `enable` and `disable`; print an error if we were given something else.
+  command = command.toLowerCase();
+  if (command != &#x27;enable&#x27; &#x26;&#x26; command != &#x27;disable&#x27;) {
+    var errorText = &#x27;Invalid argument: &#x27; + command + &#x27;. &#x27;;
+    errorText += &#x27;To enable or disable usage statistics collection, run &#x27; + usage + &#x27;.&#x27;;
+    utils.<span class="apidocCodeKeywordSpan">fatal</span>(errorText);
+    return;
+  }
+
+  // Set analytics permission according to the given command.
+  writePermission(command == &#x27;enable&#x27;);
+  console.log(&#x27;Usage statistics collection &#x27; + command + &#x27;d.&#x27;);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.fixPathSlashes" id="apidoc.element.cca.utils.fixPathSlashes">
+        function <span class="apidocSignatureSpan">cca.utils.</span>fixPathSlashes
+        <span class="apidocSignatureSpan">(p)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fixPathSlashes(p) {
+  return exports.isWindows() ? p.replace(/\//g, &#x27;\\&#x27;) : p;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.isWindows" id="apidoc.element.cca.utils.isWindows">
+        function <span class="apidocSignatureSpan">cca.utils.</span>isWindows
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isWindows() {
+  return process.platform.slice(0, 3) == &#x27;win&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+exports.fatal = function fatal(msg) {
+console.error(msg);
+if (msg &#x26;&#x26; msg.stack) console.error(msg.stack);
+exports.exit(1);
+};
+
+exports.fixPathSlashes = function fixPathSlashes(p) {
+return exports.<span class="apidocCodeKeywordSpan">isWindows</span>() ? p.replace(/\//g, &#x27;\\&#x27;) : p;
+};
+
+exports.colorizeConsole = function colorizeConsole() {
+var origWarn = console.warn;
+console.warn = function() {
+  var msg = [].slice.call(arguments).join(&#x27; &#x27;);
+  origWarn.call(console, &#x27;\x1B[33m&#x27; + msg + &#x27;\x1B[39m&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.cca.utils.waitForKey" id="apidoc.element.cca.utils.waitForKey">
+        function <span class="apidocSignatureSpan">cca.utils.</span>waitForKey
+        <span class="apidocSignatureSpan">(opt_prompt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function waitForKey(opt_prompt) {
+  opt_prompt = opt_prompt || &#x27;Press the Any Key&#x27;;
+  process.stdout.write(opt_prompt);
+  process.stdin.resume();
+  try {
+    // This fails if the process is a spawned child (likely a node bug);
+    process.stdin.setRawMode(true);
+  } catch (e) {
+  }
+  process.stdin.setEncoding(&#x27;utf8&#x27;);
+  var d = Q.defer();
+  process.stdin.on(&#x27;data&#x27;, function cont(key) {
+    if (key == &#x27;\u0003&#x27;) {
+      process.exit(2);
+    }
+    process.stdin.removeListener(&#x27;data&#x27;, cont);
+    process.stdin.pause();
+    process.stdout.write(&#x27;\n&#x27;);
+    d.resolve(key);
+  });
+  return d.promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (userConfig &#x26;&#x26; userConfig.analytics) {
+  return Q(userConfig.analytics.isAllowed);
+}
+
+// We have no record of permission, so ask away.
+var promptText = &#x27;Would you like to help make make this tool better by automatically sending usage statistics and error reports
+ to Google?\n&#x27;;
+promptText += &#x27;This information will be used in accordance with the Google Privacy Policy (http://www.google.com/policies/privacy
+). [y/n] &#x27;;
+return utils.<span class="apidocCodeKeywordSpan">waitForKey</span>(promptText)
+.then(function(key) {
+  var permission = (key.toLowerCase() == &#x27;y&#x27;);
+
+  // Write the response to the config file and return it.
+  writePermission(permission);
+  return permission;
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
