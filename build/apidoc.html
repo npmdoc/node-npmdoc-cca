@@ -105,6 +105,12 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>platform</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">cca.</span>upgrade_project</span>
 
         </li>
@@ -227,6 +233,25 @@
             function <span class="apidocSignatureSpan">cca.hooks.</span>unregisterHooks
             <span class="apidocSignatureSpan">()</span>
             </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.cca.platform">module cca.platform</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.cca.platform.bootstrap">
+            function <span class="apidocSignatureSpan">cca.platform.</span>bootstrap
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">cca.platform.</span>id</span>
 
         </li>
 
@@ -526,6 +551,8 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
+
+
 
 
 
@@ -999,6 +1026,69 @@ shelljs.rm(&#x27;-f&#x27;, path.join(&#x27;hooks&#x27;, &#x27;after_prepare&#x27
 // Remember what platforms we had before deleting them. If we only had one, don&#x27;t install the other after upgrade.
 ...</pre></li>
     </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.cca.platform" id="apidoc.module.cca.platform">module cca.platform</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.cca.platform.bootstrap" id="apidoc.element.cca.platform.bootstrap">
+        function <span class="apidocSignatureSpan">cca.platform.</span>bootstrap
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">bootstrap = function () {
+    var channel = require(&#x27;cordova/channel&#x27;),
+        cordova = require(&#x27;cordova&#x27;),
+        exec = require(&#x27;cordova/exec&#x27;),
+        modulemapper = require(&#x27;cordova/modulemapper&#x27;);
+
+    // Get the shared secret needed to use the bridge.
+    exec.init();
+
+    // TODO: Extract this as a proper plugin.
+    modulemapper.clobbers(&#x27;cordova/plugin/android/app&#x27;, &#x27;navigator.app&#x27;);
+
+    var APP_PLUGIN_NAME = Number(cordova.platformVersion.split(&#x27;.&#x27;)[0]) &#x3e;= 4 ? &#x27;CoreAndroid&#x27; : &#x27;App&#x27;;
+
+    // Inject a listener for the backbutton on the document.
+    var backButtonChannel = cordova.addDocumentEventHandler(&#x27;backbutton&#x27;);
+    backButtonChannel.onHasSubscribersChange = function() {
+        // If we just attached the first handler or detached the last handler,
+        // let native know we need to override the back button.
+        exec(null, null, APP_PLUGIN_NAME, &#x22;overrideBackbutton&#x22;, [this.numHandlers == 1]);
+    };
+
+    // Add hardware MENU and SEARCH button handlers
+    cordova.addDocumentEventHandler(&#x27;menubutton&#x27;);
+    cordova.addDocumentEventHandler(&#x27;searchbutton&#x27;);
+
+    function bindButtonChannel(buttonName) {
+        // generic button bind used for volumeup/volumedown buttons
+        var volumeButtonChannel = cordova.addDocumentEventHandler(buttonName + &#x27;button&#x27;);
+        volumeButtonChannel.onHasSubscribersChange = function() {
+            exec(null, null, APP_PLUGIN_NAME, &#x22;overrideButton&#x22;, [buttonName, this.numHandlers == 1]);
+        };
+    }
+    // Inject a listener for the volume buttons on the document.
+    bindButtonChannel(&#x27;volumeup&#x27;);
+    bindButtonChannel(&#x27;volumedown&#x27;);
+
+    // Let native code know we are all done on the JS side.
+    // Native code will then un-hide the WebView.
+    channel.onCordovaReady.subscribe(function() {
+        exec(onMessageFromNative, null, APP_PLUGIN_NAME, &#x27;messageChannel&#x27;, []);
+        exec(null, null, APP_PLUGIN_NAME, &#x22;show&#x22;, []);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
 
 
 </div>
